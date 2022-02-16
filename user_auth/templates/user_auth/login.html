@@ -1,0 +1,11 @@
+<html>
+<head>
+    <title>ログイン</title>
+</head>
+<body>
+<div>
+    {% comment %} <button type="button" onclick="location.href='https://zawaapp.herokuapp.com/user/login/twitter/'">Twitterログイン</button> {% endcomment %}
+    <button type="button" onclick="location.href='{% url 'social:begin' 'twitter' %}'">Twitterログイン</button>
+</div>
+</body>
+</html>

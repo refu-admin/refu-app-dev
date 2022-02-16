@@ -1,0 +1,27 @@
+<html>
+<head>
+    <title>TOP</title>
+</head>
+<body>
+
+{% if request.user.is_authenticated %}
+    <p>あなたはログインしています (screen_name: {{ user.access_token.screen_name }})</p>
+    <a href="/logout"><button type="button">ログアウト</button></a>
+{% else %}
+    <p>あなたはログインしていません</p>
+    <button type="button" onclick="location.href='{% url 'social:begin' 'twitter' %}'">Twitterでログイン</button>
+{% endif %}
+
+<div>
+    <div>
+      <p><b>ScreenName</b>:{{ user.access_token.screen_name }}</p>
+        <p><b>UserId</b>:{{ user.access_token.user_id }}</p>
+        <p><b>OAuthTokenSecret</b>:{{ user.access_token.oauth_token_secret }}</p>
+        <p><b>OAuthToken</b>:{{ user.access_token.oauth_token }}</p>
+        <p><b>AuthTime</b>:{{ user.extra_data.auth_time }}</p>
+
+
+    </div>
+</div>
+</body>
+</html>

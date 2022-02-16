@@ -1,0 +1,111 @@
+{% extends './base.html' %}
+{% block content %}
+
+<!-- login info -->
+<div>
+{% if request.user.is_authenticated %}
+  <p>あなたはログインしています (screen_name: {{ user.access_token.screen_name }})</p>
+  <ul>
+  {% for tweet in timeline %}
+    <li>@{{ tweet.user.screen_name }}: {{ tweet.text }}</li>
+  {% endfor %}
+  </ul>
+
+{% else %}
+  <p>あなたはログインしていません</p>
+{% endif %}
+  
+  <p><b>ScreenName</b>:{{ user.access_token.screen_name }}</p>
+  <p><b>UserId</b>:{{ user.access_token.user_id }}</p>
+  <p><b>UserName</b>:{{ user.access_token.user_name }}</p>
+  <p><b>OAuthTokenSecret</b>:{{ user.access_token.oauth_token_secret }}</p>
+  <p><b>OAuthToken</b>:{{ user.access_token.oauth_token }}</p>
+  <p><b>AuthTime</b>:{{ user.extra_data.auth_time }}</p>
+
+</div>
+<!-- login info end -->
+
+<!-- Main content -->
+<section class="content">
+
+  <!-- container -->
+  <div class="container-fluid">
+    
+    <!-- Small boxes (Stat box) -->
+    <div class="row">
+      
+      <!-- Follower counter -->
+      <div class="col-lg-3 col-6">
+           <!-- small box -->
+        <div class="small-box bg-info">
+          <div class="inner">
+            <h3>フォロワー数 : {{ user.access_token.followers_count|length }}</h3>
+              <p>Follower</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-bag"></i>
+          </div>
+             <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <!-- ./col -->
+      
+      <!-- Follow counter -->
+      <div class="col-lg-3 col-6">
+           <!-- small box -->
+        <div class="small-box bg-success">
+          <div class="inner">
+            <h3>フォロー数 : {{ user.access_token.follow_count|length }}</h3>
+              <p>Follow</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+             <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <!-- ./col -->
+      
+      <!-- FFratio counter -->
+      <div class="col-lg-3 col-6">
+           <!-- small box -->
+        <div class="small-box bg-secondary">
+          <div class="inner">
+            <h3>FF比 : {{ user.access_token.followers_count|length }}%</h3>
+              <p>FF ratio</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-person-add"></i>
+          </div>
+            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- ./col -->
+      
+      <!-- New Follower counter -->
+      <div class="col-lg-3 col-6">
+           <!-- small box -->
+          <div class="small-box bg-danger">
+            <div class="inner">
+              <h3>新規フォロワー数 : {{ user.access_token.followers_count|length }}</h3>
+                <p>New Followers</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-pie-graph"></i>
+            </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+      </div>
+      <!-- ./col -->
+    
+    </div>
+    <!-- Small boxes end (Stat box) -->
+
+  </div>
+  <!-- container end -->
+
+</section>
+<!-- Main content end -->
+
+ {% endblock content %}
