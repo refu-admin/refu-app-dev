@@ -13,3 +13,16 @@ class User(models.Model):
     age = models.IntegerField()
     contactdate = models.DateField()
     gender = models.IntegerField(verbose_name='性別', choices=GENDER_CHOICES, blank=True, null=True)
+
+class OAuthTokenTemp(models.Model):
+    id = models.BigIntegerField(primary_key=True)
+    oauth_token = models.CharField(max_length=255, db_index=True, unique=True)
+    oauth_token_secret = models.CharField(max_length=255, db_index=True, unique=True)
+    
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["oauth_token", "oauth_token_secret"],
+                name="oauth_unique"
+            ),
+        ]

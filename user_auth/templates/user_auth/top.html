@@ -21,6 +21,7 @@
   <p><b>OAuthTokenSecret</b>:{{ user.access_token.oauth_token_secret }}</p>
   <p><b>OAuthToken</b>:{{ user.access_token.oauth_token }}</p>
   <p><b>AuthTime</b>:{{ user.extra_data.auth_time }}</p>
+  <p><b>AuthTime</b>:{{ data.friends_count }}</p>
 
 </div>
 <!-- login info end -->
@@ -35,7 +36,7 @@
     <div class="row">
       
       <!-- Follower counter -->
-      <div class="col-lg-3 col-6">
+      <div class="col-md-3">
            <!-- small box -->
         <div class="small-box bg-info">
           <div class="inner">
@@ -51,7 +52,7 @@
       <!-- ./col -->
       
       <!-- Follow counter -->
-      <div class="col-lg-3 col-6">
+      <div class="col-md-3">
            <!-- small box -->
         <div class="small-box bg-success">
           <div class="inner">
@@ -67,7 +68,7 @@
       <!-- ./col -->
       
       <!-- FFratio counter -->
-      <div class="col-lg-3 col-6">
+      <div class="col-md-3">
            <!-- small box -->
         <div class="small-box bg-secondary">
           <div class="inner">
@@ -80,22 +81,6 @@
             <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
-      </div>
-      <!-- ./col -->
-      
-      <!-- New Follower counter -->
-      <div class="col-lg-3 col-6">
-           <!-- small box -->
-          <div class="small-box bg-danger">
-            <div class="inner">
-              <h3>新規フォロワー数 : {{ user.access_token.followers_count|length }}</h3>
-                <p>New Followers</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-pie-graph"></i>
-            </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-          </div>
       </div>
       <!-- ./col -->
     
